@@ -49,7 +49,7 @@ namespace GraphDrawing.Controllers
         {
             lock (lockObject)
             {
-                const float delta = 0.001f;
+                const float delta = 0.01f;
                 const float forceRepulsion = 0.1f;
                 const float forceCommunication = 0.1f;
 
