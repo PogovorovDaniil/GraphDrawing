@@ -49,9 +49,7 @@ namespace GraphDrawing.Controllers
         {
             lock (lockObject)
             {
-                const float delta = 0.01f;
-                const float forceRepulsion = 0.1f;
-                const float forceCommunication = 0.1f;
+                const float delta = 0.001f;
 
                 foreach (var node1 in nodes)
                 {
@@ -61,10 +59,10 @@ namespace GraphDrawing.Controllers
 
                         float distance = (node1.Position - node2.Position).Length();
                         Vector2 communicationVector = Vector2.Normalize(node2.Position - node1.Position);
-                        node1.Position -= forceRepulsion * communicationVector * delta / (distance * distance);
+                        node1.Position -= communicationVector * delta / (distance * distance);
                         if (node1.ContainsLinks(node2))
                         {
-                            node1.Position += forceCommunication * communicationVector * delta * distance;
+                            node1.Position += communicationVector * delta * distance;
                         }
                     }
                 }
