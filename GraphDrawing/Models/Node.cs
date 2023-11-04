@@ -22,7 +22,7 @@ namespace GraphDrawing.Models
         internal bool ContainsLinks(Node node) => links.Contains(node);
         internal void AddLink(Node node)
         {
-            if (links.Contains(node) || node.links.Contains(node)) throw new ArgumentException();
+            if (links.Contains(node) || node.links.Contains(node)) return;
             links.Add(node);
             node.links.Add(this);
         }

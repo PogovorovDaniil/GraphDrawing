@@ -19,22 +19,15 @@ namespace GraphDrawing.Controllers
             nodes = new List<Node>();
 
             #region Fill nodes
-            for (int i = 0; i < 4; i++)
+            nodes.Add(new Node());
+            for (int i = 1; i < 20; i++)
             {
                 nodes.Add(new Node());
-                for (int j = 0; j < i; j++) nodes[i].AddLink(nodes[j]);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                nodes.Add(new Node());
-                nodes[i].AddLink(nodes[i + 4]);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
+                int randCount = Random.Shared.Next(0, i) % 2 + 1;
+                for(int j = 0; j < randCount; j++)
                 {
-                    nodes.Add(new Node());
-                    nodes[i + 4].AddLink(nodes[8 + i * 4 + j]);
+                    int randNode = Random.Shared.Next(0, i);
+                    nodes[i].AddLink(nodes[randNode]);
                 }
             }
             #endregion
